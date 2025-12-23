@@ -1,0 +1,14 @@
+:root{--bg:#0f1720;--panel:#0b1220;--accent:#0ea5e9;--muted:#9aa6b2;--panel-2:#081019}
+*{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+html,body,#app{height:100%}body{margin:0;background:linear-gradient(180deg,#071022 0%,#06111a 100%);color:#dbe7ef}
+header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,0.03)}
+h1{font-size:16px;margin:0}
+.split{display:flex;flex-direction:row;gap:12px;padding:12px;height:calc(100vh - 72px)}
+.pane{flex:1;display:flex;flex-direction:column;background:var(--panel);border-radius:6px;padding:8px}
+.pane-header{font-size:13px;color:var(--muted);padding:6px 4px}
+textarea{flex:1;width:100%;resize:none;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;padding:12px;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+.actions{display:flex;gap:8px;padding-top:8px}
+button{background:linear-gradient(180deg,var(--accent),#0289c8);border:none;color:#042e3e;padding:8px 10px;border-radius:6px;cursor:pointer}
+button.secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+.status{padding:8px 12px;color:var(--muted);font-size:13px}
+@media (max-width:900px){.split{flex-direction:column;height:auto}}

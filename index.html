@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KQL ⇄ JSON Converter</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="KQL to JSON and JSON to KQL converter - static, GitHub Pages compatible">
+  </head>
+<body>
+  <header>
+    <h1>KQL ⇄ JSON Converter</h1>
+    <div class="controls">
+      <label><input id="liveSync" type="checkbox"> Live sync</label>
+    </div>
+  </header>
+
+  <main class="split">
+    <section class="pane">
+      <div class="pane-header">KQL (enter or paste)</div>
+      <textarea id="kql" placeholder="Paste KQL here..."></textarea>
+      <div class="actions">
+        <button id="toJson">Convert → JSON (down)</button>
+        <button id="copyKql">Copy KQL</button>
+        <button id="downloadKql">Download KQL</button>
+      </div>
+    </section>
+
+    <section class="pane">
+      <div class="pane-header">JSON (enter or paste)</div>
+      <textarea id="json" placeholder='Paste JSON with a "query" field here...'></textarea>
+      <div class="actions">
+        <button id="toKql">Convert → KQL (up)</button>
+        <button id="copyJson">Copy JSON</button>
+        <button id="downloadJson">Download JSON</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="status" class="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
