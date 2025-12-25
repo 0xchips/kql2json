@@ -6,21 +6,23 @@ function setStatus(msg, err){statusEl.textContent = msg; statusEl.style.color = 
 
 function kqlToJson(){
   const kql = kqlEl.value
-  // Place raw KQL into the JSON pane (user requested no {"query": ""} wrapper)
-  jsonEl.value = kql
-  setStatus('Placed raw KQL into JSON pane (no wrapper)')
+  const obj = { query: kql }
+  try{
+    const pretty = JSON.stringify(obj, null, 2)
+    jsonEl.value = pretty
+    setStatus('Converted KQL → JSON')
+  }catch(e){ setStatus('Error formatting JSON: '+e.message, true) }
 }
 
 function jsonToKql(){
   const txt = jsonEl.value
   try{
-    // Try parsing as JSON; if it's an object with `query` use that, otherwise if it's a string use it directly.
     const obj = JSON.parse(txt)
-    if(typeof obj === 'object' && typeof obj.query === 'string'){
+    if(typeof obj.query === 'string'){
       kqlEl.value = obj.query
-      setStatus('Converted JSON.object.query → KQL')
-    } else {
-      setStatus('JSON parsed but no `query` field; leaving KQL unchanged', true)
+      setStatus('Converted JSON → KQL')
+    }else{
+      setStatus('JSON missing string field "query"', true)
     }
   }catch(e){ setStatus('Invalid JSON: '+e.message, true) }
 }
